@@ -8,7 +8,7 @@ import { View, Text, FlatList, Dimensions, Button, ScrollView, RefreshControl, S
 import { dateToEpochWeekNumber, epochWNToDate } from "@/utils/epochWeekNumber";
 
 import HomeworksNoHomeworksItem from "./Atoms/NoHomeworks";
-import HomeworkItem from "./Atoms/Item";
+import HomeworkItem from "./Atoms/HomeworkItem";
 import { PressableScale } from "react-native-pressable-scale";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Book, Check, CheckCircle, CheckCircle2, CheckSquare, ChevronLeft, ChevronRight, CircleDashed, CircleDotDashed, Search, X } from "lucide-react-native";
@@ -23,6 +23,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import * as Haptics from "expo-haptics";
 import MissingItem from "@/components/Global/MissingItem";
 import { PapillonModernHeader } from "@/components/Global/PapillonModernHeader";
+import TestItem from "./Atoms/TestItem";
 
 type HomeworksPageProps = {
   index: number;
@@ -195,6 +196,23 @@ const WeekView = ({ route, navigation }) => {
           />
         }
       >
+        <NativeListHeader animated label={"Prochains DS"} />
+        <NativeList animated>
+          {sortedHomework.map((homework, idx) => (
+            <TestItem
+              key={homework.id}
+              index={idx}
+              navigation={navigation}
+              homework={homework}
+              onDonePressHandler={async () => {
+                await toggleHomeworkState(account, homework);
+                await updateHomeworks(true, false, homework.done);
+              }}
+
+            />
+          ))}
+        </NativeList>
+
         {groupedHomework && Object.keys(groupedHomework).map((day, index) => (
           <Reanimated.View
             key={day}

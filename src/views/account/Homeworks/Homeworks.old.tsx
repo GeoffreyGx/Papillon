@@ -6,7 +6,7 @@ import { toggleHomeworkState, updateHomeworkForWeekInCache } from "@/services/ho
 import { useHomeworkStore } from "@/stores/homework";
 import { useCurrentAccount } from "@/stores/account";
 import { HeaderCalendar } from "./HomeworksHeader";
-import HomeworkItem from "./Atoms/Item";
+import HomeworkItem from "./Atoms/HomeworkItem";
 import { RefreshControl } from "react-native-gesture-handler";
 import HomeworksNoHomeworksItem from "./Atoms/NoHomeworks";
 import { Homework } from "@/services/shared/Homework";

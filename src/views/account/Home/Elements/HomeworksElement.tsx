@@ -4,7 +4,7 @@ import { AccountService } from "@/stores/account/types";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useHomeworkStore } from "@/stores/homework";
 import { toggleHomeworkState, updateHomeworkForWeekInCache } from "@/services/homework";
-import HomeworkItem from "../../Homeworks/Atoms/Item";
+import HomeworkItem from "../../Homeworks/Atoms/HomeworkItem";
 import { Homework } from "@/services/shared/Homework";
 import { debounce } from "lodash";
 import { PapillonNavigation } from "@/router/refs";
